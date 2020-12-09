@@ -1,12 +1,14 @@
 {
-  "name": "bedrock-module-template-http",
+  "name": "bedrock-health",
   "version": "0.0.1-0",
-  "description": "Bedrock HTTP API",
+  "description": "Bedrock Health API",
   "main": "./lib",
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint ."
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/digitalbazaar/bedrock-module-template-http"
+    "url": "https://github.com/digitalbazaar/bedrock-health"
   },
   "keywords": [
     "bedrock"
@@ -17,19 +19,25 @@
     "url": "https://digitalbazaar.com"
   },
   "bugs": {
-    "url": "https://github.com/digitalbazaar/bedrock-module-template-http/issues"
+    "url": "https://github.com/digitalbazaar/bedrock-health/issues"
   },
-  "homepage": "https://github.com/digitalbazaar/bedrock-module-template-http",
-  "dependencies": {},
+  "homepage": "https://github.com/digitalbazaar/bedrock-health",
+  "dependencies": {
+    "@digitalbazaar/http-client": "^1.0.0",
+    "assert-plus": "^1.0.0",
+    "esm": "^3.2.25"
+  },
   "peerDependencies": {
     "bedrock": "^3.1.0",
-    "bedrock-express": "^3.1.0"
+    "bedrock-express": "^3.1.0",
+    "bedrock-https-agent": "^2.0.0"
   },
   "directories": {
     "lib": "./lib"
   },
   "devDependencies": {
     "eslint": "^7.14.0",
-    "eslint-config-digitalbazaar": "^2.6.1"
+    "eslint-config-digitalbazaar": "^2.6.1",
+    "eslint-plugin-jsdoc": "^30.6.2"
   }
 }

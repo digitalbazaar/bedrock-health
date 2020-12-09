@@ -1,22 +1,32 @@
 /*
- * Copyright (c) 2019-2020 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2020 Digital Bazaar, Inc. All rights reserved.
  */
 'use strict';
 
 const {config} = require('bedrock');
 const path = require('path');
-
-// MongoDB
-config.mongodb.name = 'bedrock_module_template_http_test';
-config.mongodb.dropCollections.onInit = true;
-config.mongodb.dropCollections.collections = [];
-
-// do not require an authentication session for tests
-config['kms-http'].requireAuthentication = false;
+require('bedrock-health');
 
 config.mocha.tests.push(path.join(__dirname, 'mocha'));
 
-config.kms.allowedHost = config.server.host;
-
 // allow self-signed certs in test framework
 config['https-agent'].rejectUnauthorized = false;
+
+// add readiness dependencies
+config.health.readiness.dependencies.ready1 = {
+  type: 'HTTP',
+  parameters: {
+    url: 'https://localhost:18443/test/health/ready1'
+  }
+};
+config.health.readiness.dependencies.ready2 = {
+  type: 'HTTP',
+  parameters: {
+    url: 'https://localhost:18443/test/health/ready2'
+  }
+};
+// variables used while testing readiness dependencies
+config.health.test = {
+  ready1: true,
+  ready2: true
+};
