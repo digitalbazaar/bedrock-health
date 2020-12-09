@@ -4,13 +4,16 @@
 'use strict';
 
 const {config} = require('bedrock');
-const {readiness} = require('bedrock-health');
+const {httpsAgent} = require('bedrock-https-agent');
+const {httpClient} = require('@digitalbazaar/http-client');
 
-describe('readiness', () => {
+describe('HTTP', () => {
   it('should pass a readiness check', async function() {
     config.health.test.ready1 = true;
     config.health.test.ready2 = true;
-    const result = await readiness.check();
+    const response = await httpClient.get(
+      'https://localhost:18443/health/ready', {agent: httpsAgent});
+    const result = response.data;
     should.exist(result);
     should.exist(result.ready);
     should.exist(result.dependencies);
@@ -29,7 +32,20 @@ describe('readiness', () => {
   it('should fail a readiness check', async function() {
     config.health.test.ready1 = true;
     config.health.test.ready2 = false;
-    const result = await readiness.check();
+    let response;
+    let result;
+    let err;
+    try {
+      response = await httpClient.get(
+        'https://localhost:18443/health/ready', {agent: httpsAgent});
+    } catch(e) {
+      err = e;
+      should.exist(e.response);
+      should.exist(e.data);
+      result = e.data;
+    }
+    should.exist(err);
+    should.not.exist(response);
     should.exist(result);
     should.exist(result.ready);
     should.exist(result.dependencies);

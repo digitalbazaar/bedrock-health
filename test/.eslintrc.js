@@ -1,11 +1,13 @@
 module.exports = {
-  root: true,
+  globals: {
+    should: true
+  },
   env: {
-    node: true
+    node: true,
+    mocha: true
   },
   extends: [
-    'digitalbazaar',
-    'digitalbazaar/jsdoc'
+    'digitalbazaar'
   ],
   ignorePatterns: ['node_modules/']
 };
