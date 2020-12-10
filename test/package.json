@@ -20,10 +20,10 @@
   "nyc": {
     "excludeNodeModules": false,
     "include": [
-      "node_modules/bedrock-resource-restriction/**"
+      "node_modules/bedrock-health/**"
     ],
     "exclude": [
-      "node_modules/bedrock-resource-restriction/node_modules/**"
+      "node_modules/bedrock-health/node_modules/**"
     ]
   }
 }
