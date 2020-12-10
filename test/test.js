@@ -25,6 +25,13 @@ bedrock.events.on('bedrock-express.configure.routes', app => {
       res.status(503).json({ready: false, dependencies: {}});
     }
   }));
+  app.get('/test/health/text-plain', asyncHandler(async (req, res) => {
+    if(config.health.test.textPlain) {
+      res.end('OK');
+    } else {
+      res.status(503).end('This text/plain service is not healty.');
+    }
+  }));
 });
 
 bedrock.start();
