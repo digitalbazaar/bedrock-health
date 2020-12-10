@@ -9,7 +9,7 @@
     "coverage-report": "nyc report"
   },
   "dependencies": {
-    "bedrock": "^3.0.0",
+    "bedrock": "^4.1.0",
     "bedrock-express": "^3.0.0",
     "bedrock-https-agent": "^2.0.0",
     "bedrock-health": "file:..",
