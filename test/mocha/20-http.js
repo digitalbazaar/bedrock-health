@@ -24,6 +24,7 @@ describe('HTTP', () => {
   it('should pass a readiness check', async function() {
     config.health.test.ready1 = true;
     config.health.test.ready2 = true;
+    config.health.test.textPlain = true;
     let response;
     let err;
     try {
@@ -54,6 +55,7 @@ describe('HTTP', () => {
   it('should fail a readiness check', async function() {
     config.health.test.ready1 = true;
     config.health.test.ready2 = false;
+    config.health.test.textPlain = false;
     let response;
     let err;
     try {
@@ -67,19 +69,30 @@ describe('HTTP', () => {
     err.status.should.equal(503);
     should.exist(err.response);
     should.exist(err.data);
-    const {data: result} = err;
+    const {data: {details: result}} = err;
     should.exist(result);
     should.exist(result.ready);
     should.exist(result.dependencies);
     result.dependencies.should.be.an('object');
     should.exist(result.dependencies.ready1);
     should.exist(result.dependencies.ready2);
+    should.exist(result.dependencies.textPlain);
     result.dependencies.ready1.should.be.an('object');
     result.dependencies.ready2.should.be.an('object');
+    result.dependencies.textPlain.should.be.an('object');
     result.ready.should.equal(false);
     should.exist(result.dependencies.ready1.ready);
-    should.exist(result.dependencies.ready2.ready);
     result.dependencies.ready1.ready.should.equal(true);
+    result.dependencies.ready1.result.should.be.an('object');
+    result.dependencies.ready1.result.should.have.keys(
+      ['dependencies', 'ready']);
+    should.exist(result.dependencies.ready2.ready);
     result.dependencies.ready2.ready.should.equal(false);
+    result.dependencies.ready2.result.should.be.an('object');
+    result.dependencies.ready2.result.should.have.keys(
+      ['dependencies', 'ready']);
+    result.dependencies.textPlain.ready.should.equal(false);
+    result.dependencies.textPlain.result.should.equal(
+      'This text/plain service is not healty.');
   });
 });

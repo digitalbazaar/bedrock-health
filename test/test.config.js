@@ -25,8 +25,15 @@ config.health.readiness.dependencies.ready2 = {
     url: 'https://localhost:18443/test/health/ready2'
   }
 };
+config.health.readiness.dependencies.textPlain = {
+  type: 'httpGet',
+  parameters: {
+    url: 'https://localhost:18443/test/health/text-plain'
+  }
+};
 // variables used while testing readiness dependencies
 config.health.test = {
   ready1: true,
-  ready2: true
+  ready2: true,
+  textPlain: true,
 };
