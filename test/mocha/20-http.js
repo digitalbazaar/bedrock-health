@@ -8,6 +8,19 @@ const {httpsAgent} = require('bedrock-https-agent');
 const {httpClient} = require('@digitalbazaar/http-client');
 
 describe('HTTP', () => {
+  it('should pass a liveness check', async function() {
+    let response;
+    let err;
+    try {
+      response = await httpClient.get(
+        'https://localhost:18443/health/live', {agent: httpsAgent});
+    } catch(e) {
+      err = e;
+    }
+    should.not.exist(err);
+    should.exist(response);
+    response.status.should.equal(200);
+  });
   it('should pass a readiness check', async function() {
     config.health.test.ready1 = true;
     config.health.test.ready2 = true;
