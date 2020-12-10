@@ -17,15 +17,24 @@ describe('HTTP', () => {
     } catch(e) {
       err = e;
     }
-    should.not.exist(err);
+    assertNoError(err);
     should.exist(response);
     response.status.should.equal(200);
   });
   it('should pass a readiness check', async function() {
     config.health.test.ready1 = true;
     config.health.test.ready2 = true;
-    const response = await httpClient.get(
-      'https://localhost:18443/health/ready', {agent: httpsAgent});
+    let response;
+    let err;
+    try {
+      response = await httpClient.get(
+        'https://localhost:18443/health/ready', {agent: httpsAgent});
+    } catch(e) {
+      err = e;
+    }
+    assertNoError(err);
+    should.exist(response);
+    response.status.should.equal(200);
     const result = response.data;
     should.exist(result);
     should.exist(result.ready);
@@ -55,6 +64,7 @@ describe('HTTP', () => {
     }
     should.exist(err);
     should.not.exist(response);
+    err.status.should.equal(503);
     should.exist(err.response);
     should.exist(err.data);
     const {data: result} = err;
