@@ -33,19 +33,18 @@ describe('HTTP', () => {
     config.health.test.ready1 = true;
     config.health.test.ready2 = false;
     let response;
-    let result;
     let err;
     try {
       response = await httpClient.get(
         'https://localhost:18443/health/ready', {agent: httpsAgent});
     } catch(e) {
       err = e;
-      should.exist(e.response);
-      should.exist(e.data);
-      result = e.data;
     }
     should.exist(err);
     should.not.exist(response);
+    should.exist(err.response);
+    should.exist(err.data);
+    const {data: result} = err;
     should.exist(result);
     should.exist(result.ready);
     should.exist(result.dependencies);
