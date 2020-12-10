@@ -14,13 +14,13 @@ config['https-agent'].rejectUnauthorized = false;
 
 // add readiness dependencies
 config.health.readiness.dependencies.ready1 = {
-  type: 'HTTP',
+  type: 'httpGet',
   parameters: {
     url: 'https://localhost:18443/test/health/ready1'
   }
 };
 config.health.readiness.dependencies.ready2 = {
-  type: 'HTTP',
+  type: 'httpGet',
   parameters: {
     url: 'https://localhost:18443/test/health/ready2'
   }
