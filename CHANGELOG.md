@@ -1,6 +1,6 @@
 # bedrock-health ChangeLog
 
-## 1.0.2 - TBD
+## 1.0.2 - 2020-12-11
 
 ### Fixed
 - Properly handle erroredSysCall.
