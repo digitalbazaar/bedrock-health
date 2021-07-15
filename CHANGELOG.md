@@ -1,6 +1,6 @@
 # bedrock-health ChangeLog
 
-## 1.1.0 - TBD
+## 1.1.0 - 2021-07-15
 
 ### Added
 - Do not listen for HTTP/HTTPS requests until readiness checks have passed. This
