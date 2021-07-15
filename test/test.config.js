@@ -16,19 +16,19 @@ config['https-agent'].rejectUnauthorized = false;
 config.health.readiness.dependencies.ready1 = {
   type: 'httpGet',
   parameters: {
-    url: 'https://localhost:18443/test/health/ready1'
+    url: 'https://example.localhost/test/health/ready1'
   }
 };
 config.health.readiness.dependencies.ready2 = {
   type: 'httpGet',
   parameters: {
-    url: 'https://localhost:18443/test/health/ready2'
+    url: 'https://example.localhost/test/health/ready2'
   }
 };
 config.health.readiness.dependencies.textPlain = {
   type: 'httpGet',
   parameters: {
-    url: 'https://localhost:18443/test/health/text-plain'
+    url: 'https://example.localhost/test/health/text-plain'
   }
 };
 // variables used while testing readiness dependencies
