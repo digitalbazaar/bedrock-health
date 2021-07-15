@@ -13,9 +13,10 @@
     "bedrock-express": "^3.0.0",
     "bedrock-health": "file:..",
     "bedrock-https-agent": "^2.0.0",
-    "bedrock-server": "^2.3.2",
+    "bedrock-server": "digitalbazaar/bedrock-server#readiness-check",
     "bedrock-test": "^5.0.0",
     "cross-env": "^7.0.3",
+    "nock": "^13.1.1",
     "nyc": "^15.0.1"
   },
   "nyc": {
