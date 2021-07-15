@@ -7,7 +7,7 @@
   is compatible with deployment platforms that lack explicit health and
   readiness checks, but instead expect that the application is ready when it
   responds to requests sent to the HTTP/HTTPS server's TCP port.
-  - Add handler for the `bedrock-server.readiness-check` event.
+  - Add handler for the `bedrock-server.readinessCheck` event.
 
 ### Changed
 - Use `nock` for mock HTTP endpoints.

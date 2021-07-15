@@ -31,7 +31,8 @@
   "peerDependencies": {
     "bedrock": "^4.1.0",
     "bedrock-express": "^3.1.0",
-    "bedrock-https-agent": "^2.0.0"
+    "bedrock-https-agent": "^2.0.0",
+    "bedrock-server": "^2.8.0"
   },
   "directories": {
     "lib": "./lib"
