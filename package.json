@@ -29,8 +29,8 @@
     "p-wait-for": "^3.2.0"
   },
   "peerDependencies": {
-    "bedrock": "^4.1.0",
-    "bedrock-express": "^3.1.0",
+    "bedrock": "^4.3.0",
+    "bedrock-express": "^4.0.0",
     "bedrock-https-agent": "^2.0.0",
     "bedrock-server": "^2.8.0"
   },

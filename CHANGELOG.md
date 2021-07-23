@@ -1,5 +1,10 @@
 # bedrock-health ChangeLog
 
+## 1.2.0 - 2021-07-xx
+
+### Added
+- Update peer deps; use bedrock@4 and bedrock-express@4.
+
 ## 1.1.0 - 2021-07-15
 
 ### Added
