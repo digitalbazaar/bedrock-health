@@ -44,4 +44,76 @@ describe('readiness', () => {
     result.dependencies.ready1.ready.should.equal(true);
     result.dependencies.ready2.ready.should.equal(false);
   });
+  it('should throw error if readiness protocol is not supported',
+    async function() {
+      const dependency = {
+        type: 123,
+        parameters: {
+          url: 'urn:zcap:xyz'
+        }
+      };
+
+      const result = await readiness._validateHttpGet(
+        {name: 'ready3', dependency});
+
+      should.exist(result);
+      result.valid.should.equal(false);
+      const {error: err} = result;
+      should.exist(err);
+      err.name.should.equal('DataError');
+      err.message.should.equal('Readiness dependency "ready3" is invalid.');
+      err.details.httpStatusCode.should.equal(500);
+      err.cause.message.should.equal('HTTP readiness protocol "urn:" not ' +
+      'supported. Supported protocols are: https:, http:');
+    });
+  it('should throw error if readiness check type is already registered',
+    async function() {
+      let result;
+      let err;
+      try {
+        result = await readiness.registerType(
+          {type: 'httpGet', run: async () => {}, validate: async () => {}});
+      } catch(e) {
+        err = e;
+      }
+
+      should.not.exist(result);
+      should.exist(err);
+      err.message.should.equal(
+        'Readiness check type "httpGet" is already registered.');
+    });
+});
+
+describe('UnknownError', () => {
+  after(() => {
+    delete config.health.readiness.dependencies.testError;
+  });
+  it('should throw error if checks are misimplemented', async function() {
+    config.health.readiness.dependencies.testError = {
+      type: 'testUnknownError',
+      parameters: {
+        url: 'https://example.localhost/test/health/testError'
+      }
+    };
+    const mockCheckHttpGet = async () => {
+      throw new Error('misimplemented.');
+    };
+    readiness.registerType({
+      type: 'testUnknownError',
+      run: mockCheckHttpGet,
+      validate: async () => {}
+    });
+    let result;
+    let err;
+    try {
+      result = await readiness.check();
+    } catch(e) {
+      err = e;
+    }
+    should.not.exist(result);
+    should.exist(err);
+    err.name.should.equal('UnknownError');
+    err.message.should.equal('Readiness check failed to run.');
+    err.details.httpStatusCode.should.equal(500);
+  });
 });
