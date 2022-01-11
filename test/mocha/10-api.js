@@ -44,7 +44,7 @@ describe('readiness', () => {
     result.dependencies.ready1.ready.should.equal(true);
     result.dependencies.ready2.ready.should.equal(false);
   });
-  it('should throw error if readiness protocol is not supported',
+  it('should return error if readiness protocol is not supported',
     async function() {
       const dependency = {
         type: 123,
@@ -64,7 +64,7 @@ describe('readiness', () => {
       err.message.should.equal('Readiness dependency "ready3" is invalid.');
       err.details.httpStatusCode.should.equal(500);
       err.cause.message.should.equal('HTTP readiness protocol "urn:" not ' +
-      'supported. Supported protocols are: https:, http:');
+        'supported. Supported protocols are: https:, http:');
     });
   it('should throw error if readiness check type is already registered',
     async function() {
@@ -76,7 +76,6 @@ describe('readiness', () => {
       } catch(e) {
         err = e;
       }
-
       should.not.exist(result);
       should.exist(err);
       err.message.should.equal(
