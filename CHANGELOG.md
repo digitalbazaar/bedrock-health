@@ -1,6 +1,6 @@
 # bedrock-health ChangeLog
 
-## 1.3.0 - 2022-TBD
+## 1.3.0 - 2022-01-21
 
 ### Added
 - Add additional tests and expose private test helper functions in API.
