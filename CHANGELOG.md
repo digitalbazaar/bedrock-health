@@ -4,6 +4,7 @@
 
 ### Added
 - Add additional tests and expose private test helper functions in API.
+- Update Bedrock peer dependencies.
 
 ## 1.2.0 - 2021-07-23
 
