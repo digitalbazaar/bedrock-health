@@ -1,14 +1,12 @@
-/*
- * Copyright (c) 2020-2021 Digital Bazaar, Inc. All rights reserved.
+/*!
+ * Copyright (c) 2020-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
+import * as bedrock from '@bedrock/core';
+import '@bedrock/health';
+import '@bedrock/https-agent';
+import '@bedrock/server';
+import '@bedrock/test';
 
-const bedrock = require('bedrock');
-require('bedrock-health');
-require('bedrock-https-agent');
-require('bedrock-server');
-require('bedrock-test');
-
-require('./nock');
+import './nock.js';
 
 bedrock.start();

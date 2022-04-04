@@ -1,10 +1,8 @@
-/*
- * Copyright (c) 2020-2021 Digital Bazaar, Inc. All rights reserved.
+/*!
+ * Copyright (c) 2020-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
-const {config} = require('bedrock');
-const nock = require('nock');
+import {config} from '@bedrock/core';
+import nock from 'nock';
 
 nock('https://example.localhost')
   .get('/test/health/ready1')
