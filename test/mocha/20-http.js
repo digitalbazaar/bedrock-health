@@ -1,10 +1,10 @@
 /*!
- * Copyright (c) 2020-2021 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2020-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
-const {config} = require('bedrock');
-const {httpsAgent} = require('bedrock-https-agent');
+import {config} from '@bedrock/core';
+import {createRequire} from 'module';
+import {httpsAgent} from '@bedrock/https-agent';
+const require = createRequire(import.meta.url);
 const {httpClient} = require('@digitalbazaar/http-client');
 
 describe('HTTP', () => {

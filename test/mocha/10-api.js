@@ -1,10 +1,8 @@
 /*!
- * Copyright (c) 2020-2021 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2020-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
-const {config} = require('bedrock');
-const {readiness} = require('bedrock-health');
+import {config} from '@bedrock/core';
+import {readiness} from '@bedrock/health';
 
 describe('readiness', () => {
   it('should pass a readiness check', async function() {
