@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-health",
   "dependencies": {
-    "@digitalbazaar/http-client": "^2.0.1",
+    "@digitalbazaar/http-client": "^3.0.0",
     "assert-plus": "^1.0.0",
     "p-wait-for": "^4.1.0"
   },
