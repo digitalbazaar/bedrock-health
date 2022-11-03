@@ -1,5 +1,10 @@
 # bedrock-health ChangeLog
 
+## 3.1.0 - 2022-xx-xx
+
+### Added
+- Add name of failing dependencies in not ready error logs.
+
 ## 3.0.0 - 2022-04-29
 
 ### Changed
