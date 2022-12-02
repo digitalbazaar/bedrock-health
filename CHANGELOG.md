@@ -1,5 +1,10 @@
 # bedrock-health ChangeLog
 
+## 3.1.2 - 2022-12-xx
+
+### Fixed
+- Adjust logging on readiness failure to include the error `message`.
+
 ## 3.1.1 - 2022-12-02
 
 ### Fixed
