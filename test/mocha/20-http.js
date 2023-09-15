@@ -92,7 +92,6 @@ describe('HTTP', () => {
     result.dependencies.ready2.result.should.have.keys(
       ['dependencies', 'ready']);
     result.dependencies.textPlain.ready.should.equal(false);
-    result.dependencies.textPlain.result.should.equal(
-      'This text/plain service is not healty.');
+    result.dependencies.textPlain.result.should.equal('Service Unavailable');
   });
 });
