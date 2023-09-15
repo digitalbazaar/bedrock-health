@@ -5,6 +5,7 @@
 ### Changed
 - **BREAKING**: Drop support for Node.js < 18.
 - Use `@digitalbazaar/http-client@4`. This version requires Node.js 18+.
+- Use `p-wait-for@5`. This version requires Node.js 14+.
 
 ## 3.1.2 - 2022-12-02
 
