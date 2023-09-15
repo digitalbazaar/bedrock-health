@@ -7,6 +7,6 @@ import '@bedrock/https-agent';
 import '@bedrock/server';
 import '@bedrock/test';
 
-import './nock.js';
+import './http.js';
 
 bedrock.start();
