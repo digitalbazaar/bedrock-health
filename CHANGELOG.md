@@ -1,5 +1,10 @@
 # bedrock-health ChangeLog
 
+## 4.1.0 - 2024-mm-dd
+
+### Changed
+- Open Source under BSD-3-Clause license.
+
 ## 4.0.0 - 2023-09-18
 
 ### Changed
