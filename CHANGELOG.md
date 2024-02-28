@@ -1,6 +1,6 @@
 # bedrock-health ChangeLog
 
-## 4.1.0 - 2024-mm-dd
+## 4.1.0 - 2024-02-28
 
 ### Changed
 - Relicense under the Apache-2.0 license.
