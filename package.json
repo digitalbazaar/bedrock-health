@@ -1,6 +1,6 @@
 {
   "name": "@bedrock/health",
-  "version": "4.1.0",
+  "version": "4.1.1-0",
   "type": "module",
   "description": "Bedrock Health API",
   "license": "Apache-2.0",
